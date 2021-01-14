@@ -1,0 +1,25 @@
+[{
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "father",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "mother",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "offspring",
+          "type": "uint256"
+        }
+      ],
+      "name": "TulipsBred",
+      "type": "event"
+    }]

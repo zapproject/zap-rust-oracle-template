@@ -1,0 +1,42 @@
+[ {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "name": "id",
+          "type": "uint256"
+        },
+        {
+          "indexed": true,
+          "name": "subscriber",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "name": "provider",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "name": "response1",
+          "type": "string"
+        },
+        {
+          "indexed": false,
+          "name": "response2",
+          "type": "string"
+        },
+        {
+          "indexed": false,
+          "name": "response3",
+          "type": "string"
+        },
+        {
+          "indexed": false,
+          "name": "response4",
+          "type": "string"
+        }
+      ],
+      "name": "OffchainResult4",
+      "type": "event"
+    }]

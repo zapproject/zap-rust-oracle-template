@@ -1,0 +1,24 @@
+
+{
+    "RecievedQuery(string,bytes32,bytes32[])":"0xb1d30540f0019c1e94a292da7a6f164844c5d2e3dee75e0b3a6a66e4e9a4e153",
+    "TEST(uint,bytes32,string)":"0x4d6302cd99e8a55adf16ded396c181f55e502006bab38eeff309f5aa3fb4a1ee",
+    "Incoming(uint256,address,address,string,bytes32,bytes32[],bool)":"0x69741cc3ec0270f258feb6b53b42ef1e7d2251a3c8eea4f6ba1f72bd4b7beba7",
+    "FulfillQuery(address,address,bytes32)":"0xd2acd679e4b12e04dac69f514df2934d7bdb622acd5b5ebaea14f3dd70c3d58a",
+    "OffchainResponse(uint256,address,address,bytes32[])":"0x92d44f3550f6aeaab26241971266a417e4385691402c27c5a1bf69b2c19210c6",
+    "OffchainResponseInt(uint256,address,address,int[])":"0x8d6cc434bb2c2fc36f86ebdc15f28aad99fa1dcbfbe681aaf0eb5689ac5e630f",
+    "OffchainResult1(uint256,address,address,string)":"0x61ca5cd516a9a4012e4c147542d38223206ca531953abcb3272f579768d9dfb0",
+    "OffchainResult2(uint256,address,address,string,string)":"0xf34afe5c6e139b15c1ff3b929a198532242d2d8727db2099925e4e2d8a8fc681",
+    "OffchainResult3(uint256,address,address,string,string,string)":"0x5d15dbf2e2e3132b5a4fa750a08fbdc88bde1149224a6b1de740e50804707ef2",
+    "OffchainResult4(uint256,address,address,string,string,string,string)":"0x5e141f0f2db9b2fa0d44e60384103676292be03cac75671374ea23e719dcd64b",
+    "0x4030457f4368d74748ca5f9c90692bd6c8a018884ddca38fcbce9e02179e777e",
+    "CanceledRequest(uint256,address,address)":"0x01aa7d984ab9ef683cf842c6260f8c3d4e2c2c4a32bfa5120bf0f6bcd51225f0",
+    "MadeQuery(address,string,uint256)":"0x50b551167947510d4c64636aac23b675db7849e6e7c824e4cf5830c3400e98a0",
+    "Result1(uint256,string)":"0x5d599109d8427016e4c93bff9b5f27e4cd24a83316a010d9ef7e15b7105d30e7",
+    "Result1(uint256,bytes32)":"0x5eef7b8de70c44e7326d1d7baa155450f5b38fc8d41309c12b2fc81817606b81",
+    "Result2(uint256,string,string)":"0x0c98c7262dfd083f4b7cd58bc095ed2ef00c31ad4e6859d16be4c2b0f7fadeae",
+    "Escrowed(address,address,bytes32,uint256)":"0x2738c9bd1693cadc7b4fabefd6467b42f901650c7401bad1076dbc984f4b15d0",
+    "NewProvider(address,bytes32)":"0x96c4fc31a3e383225857c821101daf68248108597da8ddde0ac2b431eb9a16be",
+    "NewCurve(address,bytes32,int[],address)":"0x992a689e5abd6aa190d6f8e6fce5e7100bb53257e6aced5a99a0f3498b70a5de"
+}
+
+

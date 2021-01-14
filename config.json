@@ -1,0 +1,49 @@
+
+{"events":[
+  
+{
+    "name":"Incoming",
+    "event_hash":"0x69741cc3ec0270f258feb6b53b42ef1e7d2251a3c8eea4f6ba1f72bd4b7beba7",
+    "address":"",
+    "abi_path":"eventsABI/Incoming.abi",
+    "response_type":"web_socket",
+    "response_data":"none"
+    
+
+
+
+},
+{
+    "name":"FulfillQuery",
+    "event_hash":"0xd2acd679e4b12e04dac69f514df2934d7bdb622acd5b5ebaea14f3dd70c3d58a",
+    "address":"",
+    "abi_path":"eventsABI/FulfillQuery.abi",
+    "response_type":"web_socket",
+    "response_data":"none"
+    
+   
+
+},
+{
+    "name":"NewProvider",
+    "event_hash":"0x96c4fc31a3e383225857c821101daf68248108597da8ddde0ac2b431eb9a16be",
+    "address":"a513E6E4b8f2a923D98304ec87F64353C4D5C853",
+    "abi_path":"eventsABI/NewProvider.abi",
+    "response_type":"web_socket",
+    "response_data":"none"
+    
+   
+
+},
+{
+    "name":"NewCurve",
+    "event_hash":"0x992a689e5abd6aa190d6f8e6fce5e7100bb53257e6aced5a99a0f3498b70a5de",
+    "address":"a513E6E4b8f2a923D98304ec87F64353C4D5C853",
+    "abi_path":"eventsABI/NewProvider.abi",
+    "response_type":"web_socket",
+    "response_data":"none"  
+
+}
+
+
+]}
