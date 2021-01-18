@@ -11,7 +11,7 @@ RUN rm src/*.rs
 
 ADD . ./
 
-RUN rm ./target/release/deps/zap-rust-oracle-template*
+RUN rm ./target/release/deps/zap_rust_oracle_template*
 RUN cargo build --release
 
 

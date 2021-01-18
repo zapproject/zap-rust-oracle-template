@@ -30,6 +30,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     dotenv().ok();
     //println!("{}", dotenv!("PRIVATE_KEY"));
     let provider = dotenv!("WEB3_PROVIDER");
+    
     let socket_port = dotenv!("PORT");
     println!("{:?}",&provider);
     let mut event_mapping = HashMap::new();

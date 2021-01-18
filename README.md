@@ -31,7 +31,7 @@ Usage
             PORT=""
 
         Build with docker:
-            docker build -t rust-web3 -f ./Dockerfile .
+           from project run: docker build -t rust-web3 -f ./Dockerfile .
         Build with cargo:
             cargo build --release
     Running:

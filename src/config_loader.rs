@@ -14,8 +14,7 @@ pub struct event_config {
     pub abi_path: String,
     pub response_type: String,
     pub response_data:String,
-    pub response_param_names: Vec<String>,
-    pub extra_response_parms: Vec<String>,
+    
 }
 impl event_config {
     fn new(
@@ -25,8 +24,7 @@ impl event_config {
         _abi_path: String,
         _response_type: String,
         _response_data:String,
-        _response_param_names: Vec<String>,
-        _extra_response_parms: Vec<String>,
+       
     ) -> event_config {
         event_config {
             name: _name,
@@ -35,8 +33,7 @@ impl event_config {
             abi_path: _abi_path,
             response_type: _response_type,
             response_data:_response_data,
-            response_param_names: _response_param_names,
-            extra_response_parms: _extra_response_parms,
+           
         }
     }
 }
@@ -79,8 +76,7 @@ pub fn convert_value_to_event_config(json: Value) -> (Vec<event_config>, Vec<H25
                 String::from(event["abi_path"].as_str().unwrap()),
                 String::from(event["response_type"].as_str().unwrap()),
                 String::from(event["response_data"].as_str().unwrap()),
-                value_array_string(&event["response_param_names"]),
-                value_array_string(&event["extra_response_parms"]),
+               
             ));
             println!("{:?}", event["address"].to_string());
 
