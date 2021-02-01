@@ -1,6 +1,7 @@
 var net = require('net');
-
+let callBackUtils=require('./queryCallback.js')
 // creates the server
+console.log(callBackUtils)
 var server = net.createServer();
 
 //emitted when server closes ...not emitted until all connections closes.
@@ -65,7 +66,15 @@ socket.on('data',function(data){
   console.log('Bytes written : ' + bwrite);
   console.log('Data sent to server : ' + data);
 
-  //echo data
+  let formatted_event=processIncomingEventJSON(JSON.parse(data))
+  console.log(formatted_event)
+  let params=formatEndpointParams(formatted_event.endpointParams)
+  console.log(params)
+  //let path=callBackUtils.convert_params_to_strings(params)
+
+  
+  callBackUtils.send_callback(formatted_event.query,["0x514910771af9ca656af840dff83e8264ecf986ca","usd"],`0x${formatted_event.subscriber}`,formatted_event.id)
+
   var is_kernel_buffer_full = socket.write('Data ::' + data);
   if(is_kernel_buffer_full){
     console.log('Data was flushed successfully from kernel buffer i.e written successfully!');
@@ -128,8 +137,25 @@ server.maxConnections = 10;
 
 //static port allocation
 server.listen(3007);
+//OBJECT FORMAT
+//"[{"name":"id","value":"dd01e0d1e313c493bd8dcb841088d6d6bcbca3b0c3cfe6d0c76df566f0b2577d"},{"name":"provider","value":"f39fd6e51aad88f6f4ce6ab8827279cfffb92266"},{"name":"subscriber","value":"9a9f2ccfde556a7e9ff0848998aa4a0cfd8863ae"},{"name":"query","value":"query"},{"name":"endpoint","value":"0da72197e898ebe1814471a76048ed137a089f595c1e7038f2b70e98645e7652"},{"name":"endpointParams","value":"[273c58c66704975459b45d17d8d262d7b6de59f5e57291ea5af890e2cf11a2b8,08455b9a244e3f6e53a4d620c3d1261bb351f203ccdf11324cfed2696b108913]"},{"name":"onchainSubscriber","value":"true"}]"
+function processIncomingEventJSON(event_object){
+  let temp={}
+  console.log(event_object[0])
+  event_object.forEach(item=>{
+    temp[item.name]=item.value;
 
-
+  })
+  return temp
+}
+function formatEndpointParams(params){
+ params=params.split(',')
+ console.log(params)
+ params[0]=params[0].slice(1)
+ console.log(params.length)
+ params[params.length-1]=params[params.length-1].slice(0,params[1].length-1)
+ return params
+}
 // for dyanmic port allocation
 /*server.listen(function(){
   var address = server.address();

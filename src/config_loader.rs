@@ -1,11 +1,9 @@
-use serde::{Deserialize, Serialize};
 use serde_json::Value;
-use std::convert::TryInto;
 use std::fs::File;
 use std::io::BufReader;
 use std::io::Error;
 use std::path::Path;
-use web3::types::{H160, H256, U256};
+use web3::types::{H160, H256};
 
 pub struct event_config {
     pub name: String,
@@ -13,8 +11,7 @@ pub struct event_config {
     pub address: String,
     pub abi_path: String,
     pub response_type: String,
-    pub response_data:String,
-    
+    pub response_data: String,
 }
 impl event_config {
     fn new(
@@ -23,8 +20,7 @@ impl event_config {
         _address: String,
         _abi_path: String,
         _response_type: String,
-        _response_data:String,
-       
+        _response_data: String,
     ) -> event_config {
         event_config {
             name: _name,
@@ -32,13 +28,13 @@ impl event_config {
             address: _address,
             abi_path: _abi_path,
             response_type: _response_type,
-            response_data:_response_data,
-           
+            response_data: _response_data,
         }
     }
 }
-fn read_config_from_file<P: AsRef<Path>>(path: P) -> Result<Value, Box<Error>> {
+fn read_config_from_file(_path: &str) -> Result<Value, Box<Error>> {
     // Open the file in read-only mode with buffer.
+    let path = Path::new(_path);
     let file = File::open(path).unwrap();
     let reader = BufReader::new(file);
 
@@ -54,14 +50,6 @@ pub fn convert_value_to_event_config(json: Value) -> (Vec<event_config>, Vec<H25
     let mut address = Vec::new();
     let mut event_sigs = Vec::new();
     let mut event_configs = Vec::new();
-    let value_array_string = |args: &Value| -> Vec<String> {
-        println!("{:?}", args);
-        args.as_array()
-            .unwrap()
-            .into_iter()
-            .map(|arg| String::from(arg.as_str().unwrap()))
-            .collect()
-    };
 
     config_array
         .as_array()
@@ -76,7 +64,6 @@ pub fn convert_value_to_event_config(json: Value) -> (Vec<event_config>, Vec<H25
                 String::from(event["abi_path"].as_str().unwrap()),
                 String::from(event["response_type"].as_str().unwrap()),
                 String::from(event["response_data"].as_str().unwrap()),
-               
             ));
             println!("{:?}", event["address"].to_string());
 
@@ -89,7 +76,7 @@ pub fn convert_value_to_event_config(json: Value) -> (Vec<event_config>, Vec<H25
         });
     (event_configs, event_sigs, address)
 }
-pub fn load_config() -> (Vec<event_config>, Vec<H256>, Vec<H160>) {
-    let raw_values = read_config_from_file("./config.json").unwrap();
+pub fn load_config(path: &String) -> (Vec<event_config>, Vec<H256>, Vec<H160>) {
+    let raw_values = read_config_from_file(path.as_str()).unwrap();
     convert_value_to_event_config(raw_values)
 }

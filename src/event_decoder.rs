@@ -1,14 +1,14 @@
 //use crate::error::Error;
 use ethabi::param_type::{ParamType, Reader};
-use ethabi::token::{LenientTokenizer, StrictTokenizer, Token, Tokenizer};
-use ethabi::{decode, encode, Contract, Event, Function, Hash};
-use rustc_hex::{FromHex, ToHex};
+use ethabi::token::Token;
+use ethabi::{decode, Contract, Event, Hash};
+use rustc_hex::FromHex;
 use serde::{Deserialize, Serialize};
 use std::fs::File;
 //use std::fs::File;
 use tiny_keccak::Keccak;
 
-#[derive(Serialize, Deserialize, Debug)]
+#[derive(Serialize, Deserialize, Debug, PartialEq, Eq)]
 pub struct event_value {
     name: String,
     value: String,
@@ -18,6 +18,12 @@ impl event_value {
         event_value {
             name: _name,
             value: _value,
+        }
+    }
+    fn new_from_str(_name: &str, _value: &str) -> event_value {
+        event_value {
+            name: String::from(_name),
+            value: String::from(_value),
         }
     }
 }
@@ -106,15 +112,23 @@ pub fn decode_log(
     Ok(result)
 }
 #[test]
-fn log_decode() {
-    //let command = "ethabi decode log ../res/event.abi Event -l 0000000000000000000000000000000000000000000000000000000000000001 0000000000000000000000004444444444444444444444444444444444444444".split(" ");
-    let abi = "event.abi";
-    let name = "Event";
-    let topic = [String::from(
-        "0000000000000000000000000000000000000000000000000000000000000001",
-    )];
-    let data = "0000000000000000000000004444444444444444444444444444444444444444";
-    let expected = ["a true", "b 4444444444444444444444444444444444444444"];
+fn Incoming_log_decode() {
+    let abi = "./eventsABI/Incoming.abi";
+    let name = "Incoming";
+    let topic = [
+        String::from("69741cc3ec0270f258feb6b53b42ef1e7d2251a3c8eea4f6ba1f72bd4b7beba7"),
+        String::from("dd01e0d1e313c493bd8dcb841088d6d6bcbca3b0c3cfe6d0c76df566f0b2577d"),
+        String::from("000000000000000000000000f39fd6e51aad88f6f4ce6ab8827279cfffb92266"),
+        String::from("0000000000000000000000009a9f2ccfde556a7e9ff0848998aa4a0cfd8863ae"),
+    ];
+    let data = "00000000000000000000000000000000000000000000000000000000000000800da72197e898ebe1814471a76048ed137a089f595c1e7038f2b70e98645e765200000000000000000000000000000000000000000000000000000000000000c00000000000000000000000000000000000000000000000000000000000000001000000000000000000000000000000000000000000000000000000000000000571756572790000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000002273c58c66704975459b45d17d8d262d7b6de59f5e57291ea5af890e2cf11a2b808455b9a244e3f6e53a4d620c3d1261bb351f203ccdf11324cfed2696b108913";
+    let expected = [event_value::new(String::from("id"),String::from("dd01e0d1e313c493bd8dcb841088d6d6bcbca3b0c3cfe6d0c76df566f0b2577d")),event_value::new_from_str("provider","f39fd6e51aad88f6f4ce6ab8827279cfffb92266"),event_value::new_from_str("subscriber","9a9f2ccfde556a7e9ff0848998aa4a0cfd8863ae"),event_value::new_from_str("query","query"),event_value::new_from_str("endpoint","0da72197e898ebe1814471a76048ed137a089f595c1e7038f2b70e98645e7652" ),event_value::new_from_str("endpointParams","[273c58c66704975459b45d17d8d262d7b6de59f5e57291ea5af890e2cf11a2b8,08455b9a244e3f6e53a4d620c3d1261bb351f203ccdf11324cfed2696b108913]")];
+
     let decoded = decode_log(abi, name, topic.to_vec(), data).unwrap();
-    assert_eq!(decoded, expected);
+    println!("{:?}", decoded);
+    assert_eq!(decoded[0], expected[0]);
+    assert_eq!(decoded[1], expected[1]);
+    assert_eq!(decoded[2], expected[2]);
+    assert_eq!(decoded[3], expected[3]);
+    assert_eq!(decoded[4], expected[4]);
 }
