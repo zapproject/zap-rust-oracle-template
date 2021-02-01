@@ -1,0 +1,27 @@
+[{
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "name": "holder",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "name": "oracle",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "name": "endpoint",
+          "type": "bytes32"
+        },
+        {
+          "indexed": false,
+          "name": "numDots",
+          "type": "uint256"
+        }
+      ],
+      "name": "Returned",
+      "type": "event"
+    }]

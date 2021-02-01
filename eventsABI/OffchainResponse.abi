@@ -1,0 +1,27 @@
+  [{
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "name": "id",
+          "type": "uint256"
+        },
+        {
+          "indexed": true,
+          "name": "subscriber",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "name": "provider",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "name": "response",
+          "type": "bytes32[]"
+        }
+      ],
+      "name": "OffchainResponse",
+      "type": "event"
+    }]
