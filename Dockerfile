@@ -2,7 +2,7 @@ FROM rust:1.47 as builder
 
 RUN USER=root cargo new --bin zap-rust-oracle-template
 WORKDIR ./zap-rust-oracle-template
-
+###you can change it to mainnet or kovan json file
 COPY ./testserver/.env ./testserver/.env
 RUN cargo build --release
 COPY ./Cargo.toml ./Cargo.toml
